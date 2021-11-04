@@ -2,7 +2,7 @@ const puppeteer = require('puppeteer');
 const proxyChain = require('proxy-chain');
 
 (async() => {
-    const oldProxyUrl = 'http://proxy_user+DE:proxy_password@x.botproxy.net:8080';
+    const oldProxyUrl = 'http://proxy_user+DE:proxy_password@x.botproxy.net:8081';
     const newProxyUrl = await proxyChain.anonymizeProxy(oldProxyUrl);
 
     // Prints something like "http://127.0.0.1:45678"
