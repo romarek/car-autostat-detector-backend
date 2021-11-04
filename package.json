@@ -18,7 +18,6 @@
     "@babel/preset-env": "^7.4.5",
     "@babel/register": "^7.4.4",
     "@babel/runtime": "^7.4.5",
-    "@marsron/google-image": "^1.0.4",
     "admin-bro": "^4.0.1",
     "admin-bro-users-permissions": "^1.0.4",
     "async": "^3.2.1",
