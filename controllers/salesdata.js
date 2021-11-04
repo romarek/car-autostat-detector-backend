@@ -359,7 +359,6 @@ exports.findSearchQueriesSelect = (req, res) => {
           distinct: true,
           where: {
               [Op.and]: [
-                  condType,
                   condMake,
                   condModel,
                   condYear.begin,
