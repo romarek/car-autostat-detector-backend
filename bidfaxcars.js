@@ -87,7 +87,7 @@ async function scrapeData(url) {
         } else {
             summary = JSON.stringify(results);
         }
-        fs.writeFile(`./car.json`, summary.replace(/\\/, ''), (err) => {
+        fs.writeFile(`./car.json`, summary.replaceAll(/\\/gi, ''), (err) => {
             if (err) {
               console.error(err);
               browser.close();
@@ -113,29 +113,9 @@ async function scrapeAllProcess() {
     }
 }
 
-const testFolder = './bin/data/';
+const testFolder = './';
 const fileArray = [
-    'coutries1-104.js', 'coutries1-229.js', 'coutries1-230.js', 'coutries1-249.js',
-    'coutries1-254.js', 'coutries1-262.js', 'coutries1-269.js', 'coutries1-32.js',
-    'coutries1-337.js', 'coutries1-344.js', 'coutries1-353.js', 'coutries1-405.js',
-    'coutries1-416.js', 'coutries1-426.js', 'coutries1-524.js', 'coutries1-582.js',
-    'coutries1-784.js', 'coutries1-81.js',  'coutries1-863.js', 'coutries1-879.js',
-    'coutries1-892.js', 'coutries1-94.js',  'coutries1-945.js', 'coutries1-971.js',
-    'coutries1-999.js', 'coutries2-103.js', 'coutries2-105.js', 'coutries2-143.js',
-    'coutries2-233.js', 'coutries2-306.js', 'coutries2-373.js', 'coutries2-433.js',
-    'coutries2-44.js',  'coutries2-450.js', 'coutries2-461.js', 'coutries2-474.js',
-    'coutries2-498.js', 'coutries2-528.js', 'coutries2-545.js', 'coutries2-572.js',
-    'coutries2-672.js', 'coutries2-779.js', 'coutries2-81.js',  'coutries2-819.js',
-    'coutries2-834.js', 'coutries2-849.js', 'coutries2-85.js',  'coutries2-853.js',
-    'coutries2-885.js', 'coutries2-898.js', 'coutries2-904.js', 'coutries2-911.js',
-    'coutries2-92.js',  'coutries2-959.js', 'coutries3-116.js', 'coutries3-143.js',
-    'coutries3-169.js', 'coutries3-190.js', 'coutries3-244.js', 'coutries3-269.js',
-    'coutries3-29.js',  'coutries3-327.js', 'coutries3-338.js', 'coutries3-390.js',
-    'coutries3-427.js', 'coutries3-459.js', 'coutries3-47.js',  'coutries3-479.js',
-    'coutries3-481.js', 'coutries3-502.js', 'coutries3-510.js', 'coutries3-521.js',
-    'coutries3-529.js', 'coutries3-532.js', 'coutries3-62.js',  'coutries3-667.js',
-    'coutries3-676.js', 'coutries3-777.js', 'coutries3-790.js', 'coutries3-833.js',
-    'coutries3-887.js', 'coutries3-958.js', 'coutries3-980.js', 'coutries4-616.js'
+  'linkstoconvert.js'
   ];
 
 // async function scrapeAllProcessFromFiles() {
@@ -159,7 +139,7 @@ async function getListOfFiles() {
 // getListOfFiles();
 // scrapeAllProcessFromFiles();
 
-fs.readFile(`${testFolder}${fileArray[2]}`, 'utf8', (err, data) => {
+fs.readFile(`./bin/_links_to_convert/linkstoconvert.js`, 'utf8', (err, data) => {
   array = JSON.parse(data);
   scrapeAllProcess();
 });

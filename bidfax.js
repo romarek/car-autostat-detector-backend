@@ -39,7 +39,7 @@ async function generateLinks() {
     const brands = [
       'audi', 'bentley', 'bmw', 'alfa-romeo', 'aston-martin', 'buick', 'cadillac', 'chevrolet',
       'dodge', 'ducati', 'ferrari', 'honda', 'infiniti', 'jaguar', 'kia', 'land-rover', 'lexus',
-      'mazda', 'mini', 'mitsubishi', 'nissan', 'porsche', 'saab', 'suzuki', 'tesla', 'toyota',
+      'mazda', 'mercedes-benz', 'mini', 'mitsubishi', 'nissan', 'porsche', 'saab', 'subaru', 'suzuki', 'tesla', 'toyota',
       'volkswagen', 'volvo', 'yamaha'];
     for (let j = 0; j < brands.length; j++) {
       await scrapeData(`https://en.bidfax.info/${brands[j]}/page/${i}/`, i);

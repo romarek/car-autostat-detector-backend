@@ -5,7 +5,7 @@ const fs = require('fs');
 const http = require('http');
 const axios = require('axios');
 
-const fileStream = fs.createReadStream(path.join(__dirname, './bin/salesdatatoimportfields.json'));
+const fileStream = fs.createReadStream(path.join(__dirname, './car.json'));
 const jsonStream = StreamArray.withParser();
 
 let processNumber = 1;
@@ -14,7 +14,7 @@ const processingStream = new Writable({
     write({key, value}, encoding, callback) {          
         setTimeout(() => {
             // console.log(JSON.stringify(value));
-            axios.post('http://localhost:8081/api/salesdata', value, { headers: {
+            axios.post('http://185.157.81.192:8081/api/salesdata', value, { headers: {
                 'Content-Type': 'application/json'
               }})
               .then(function (response) {
