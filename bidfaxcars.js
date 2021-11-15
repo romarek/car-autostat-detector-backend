@@ -3,6 +3,8 @@ const cheerio = require("cheerio");
 const puppeteer = require('puppeteer');
 const proxyChain = require('proxy-chain');
 const fs = require("fs");
+const Jimp = require('jimp');
+const sharp = require('sharp');
 
 async function scrapeData(url) {
   try {
@@ -13,10 +15,67 @@ async function scrapeData(url) {
       }
     );
     const page = await browser.newPage();
+    const session = await page.target().createCDPSession();
+    const {windowId} = await session.send('Browser.getWindowForTarget');
+    await session.send('Browser.setWindowBounds', {windowId, bounds: {windowState: 'minimized'}});
     await page.setViewport({width: 1440, height: 720});
     await page.goto(url, { waitUntil: 'networkidle2' });
     const data = await page.content();
     const $ = cheerio.load(data);
+    const imageToEdit = {
+      ImageURL01: $('div.fotorama__stage__frame:nth-child(1) > img:nth-child(1)').attr('src'),
+      ImageURL02: $('div.fotorama__stage__frame:nth-child(1) > img:nth-child(1)').attr('src').replace(/img1/, 'img2'),
+      ImageURL03: $('div.fotorama__stage__frame:nth-child(1) > img:nth-child(1)').attr('src').replace(/img1/, 'img3'),
+      ImageURL04: $('div.fotorama__stage__frame:nth-child(1) > img:nth-child(1)').attr('src').replace(/img1/, 'img4'),
+      ImageURL05: $('div.fotorama__stage__frame:nth-child(1) > img:nth-child(1)').attr('src').replace(/img1/, 'img5'),
+      ImageURL06: $('div.fotorama__stage__frame:nth-child(1) > img:nth-child(1)').attr('src').replace(/img1/, 'img6'),
+      ImageURL07: $('div.fotorama__stage__frame:nth-child(1) > img:nth-child(1)').attr('src').replace(/img1/, 'img7'),
+      ImageURL08: $('div.fotorama__stage__frame:nth-child(1) > img:nth-child(1)').attr('src').replace(/img1/, 'img8'),
+      ImageURL09: $('div.fotorama__stage__frame:nth-child(1) > img:nth-child(1)').attr('src').replace(/img1/, 'img9'),
+    };
+    function getImageForExternal(imgURLToRestore, number) {
+      Jimp.read(imgURLToRestore)
+      .then(imageRead => {
+        return imageRead
+          .rotate(-5, true)
+          .crop(40, 52, 600, 385)
+          .quality(100)
+          .write(`./__storage/${results.Make}-${results.ModelGroup}-${results.Color}-${results.Year}-${results.VIN}_${number}.jpg`);
+      })
+      .catch(err => {
+        console.error(err);
+      });
+    }
+    
+    getImageForExternal(imageToEdit.ImageURL01, 1);
+    console.log('Get 1!');
+    getImageForExternal(imageToEdit.ImageURL02, 2);
+    console.log('Get 2!');
+    getImageForExternal(imageToEdit.ImageURL03, 3);
+    console.log('Get 3!');
+    getImageForExternal(imageToEdit.ImageURL04, 4);
+    console.log('Get 4!');
+    getImageForExternal(imageToEdit.ImageURL05, 5);
+    console.log('Get 5!');
+    getImageForExternal(imageToEdit.ImageURL06, 6);
+    console.log('Get 6!');
+    getImageForExternal(imageToEdit.ImageURL07, 7);
+    console.log('Get 7!');
+    getImageForExternal(imageToEdit.ImageURL08, 8);
+    console.log('Get 8!');
+    getImageForExternal(imageToEdit.ImageURL09, 9);
+    console.log('Get 9!');
+
+    const filename = {
+        Make: $('#dle-speedbar > span:nth-child(2) > a:nth-child(1) > span:nth-child(1)').text(),
+        ModelGroup: $('#dle-speedbar > span:nth-child(3) > a:nth-child(1) > span:nth-child(1)').text(),
+        Year: $('p.short-story2:nth-child(5) > span:nth-child(1)').text(),
+        Color: $('p.short-story2:nth-child(18) > span:nth-child(1)').text(),
+        VIN: $('p.short-story:nth-child(6) > span:nth-child(1)').text(),
+    };
+
+    const file = `${filename.Make}-${filename.ModelGroup}-${filename.Color}-${filename.Year}-${filename.VIN}`;
+
     const results = {
         Title: $('.full-title > h1:nth-child(1)').text(),
         FinalBid: $('.bidfax-price > span:nth-child(2)').text(),
@@ -62,19 +121,19 @@ async function scrapeData(url) {
         GridRow: $('').text(),
         MakeAnOfferEligible: $('').text(),
         BuyItNowPrice: $('').text(),
-        ImageURL: $('div.fotorama__stage__frame:nth-child(1) > img:nth-child(1)').attr('src'),
-        ImageURL01: $('div.fotorama__stage__frame:nth-child(1) > img:nth-child(1)').attr('src'),
-        ImageURL02: $('div.fotorama__stage__frame:nth-child(1) > img:nth-child(1)').attr('src').replace(/img1/, 'img2'),
-        ImageURL03: $('div.fotorama__stage__frame:nth-child(1) > img:nth-child(1)').attr('src').replace(/img1/, 'img3'),
-        ImageURL04: $('div.fotorama__stage__frame:nth-child(1) > img:nth-child(1)').attr('src').replace(/img1/, 'img4'),
-        ImageURL05: $('div.fotorama__stage__frame:nth-child(1) > img:nth-child(1)').attr('src').replace(/img1/, 'img5'),
-        ImageURL06: $('div.fotorama__stage__frame:nth-child(1) > img:nth-child(1)').attr('src').replace(/img1/, 'img6'),
-        ImageURL07: $('div.fotorama__stage__frame:nth-child(1) > img:nth-child(1)').attr('src').replace(/img1/, 'img7'),
-        ImageURL08: $('div.fotorama__stage__frame:nth-child(1) > img:nth-child(1)').attr('src').replace(/img1/, 'img8'),
-        ImageURL09: $('div.fotorama__stage__frame:nth-child(1) > img:nth-child(1)').attr('src').replace(/img1/, 'img9'),
+        ImageURL: `/storage/${file}_1.jpg`,
+        ImageURL01: `/storage/${file}_1.jpg`,
+        ImageURL02: `/storage/${file}_2.jpg`,
+        ImageURL03: `/storage/${file}_3.jpg`,
+        ImageURL04: `/storage/${file}_4.jpg`,
+        ImageURL05: `/storage/${file}_5.jpg`,
+        ImageURL06: `/storage/${file}_6.jpg`,
+        ImageURL07: `/storage/${file}_7.jpg`,
+        ImageURL08: `/storage/${file}_8.jpg`,
+        ImageURL09: `/storage/${file}_9.jpg`,
         Trim: $('').text(),
         LastUpdatedTime: $('').text()
-    }; 
+    };
     // console.log(results);
     const d = new Date();
     let ms = d.getUTCMilliseconds();
@@ -97,6 +156,7 @@ async function scrapeData(url) {
             browser.close();
           });
     });
+    
   } catch (err) {
     console.error(err);
     browser.close();

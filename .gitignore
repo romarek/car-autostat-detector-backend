@@ -1,1 +1,5 @@
 node_modules
+bin
+google-images-download
+__storage
+/salesdata.csv

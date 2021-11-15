@@ -20,7 +20,7 @@ async function scrapeData(url, i) {
     const dataBind = JSON.stringify(hrefs);
     const d = new Date();
   let ms = d.getUTCMilliseconds();
-    await fs.writeFile(`./coutries${i}-${ms}.json`, dataBind, (err) => {
+    await fs.writeFile(`./coutries${i}-${ms}.txt`, dataBind, (err) => {
       if (err) {
         console.error(err);
         browser.close();

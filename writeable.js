@@ -14,7 +14,7 @@ const processingStream = new Writable({
     write({key, value}, encoding, callback) {          
         setTimeout(() => {
             // console.log(JSON.stringify(value));
-            axios.post('http://185.157.81.192:8081/api/salesdata', value, { headers: {
+            axios.post('http://localhost:8081/api/salesdata', value, { headers: {
                 'Content-Type': 'application/json'
               }})
               .then(function (response) {
