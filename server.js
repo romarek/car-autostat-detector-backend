@@ -43,7 +43,7 @@ app.use(
   express.urlencoded({ extended: true }),
   morgan("tiny"),
   cors({
-    origin: "http://185.157.81.192:3000",
+    origin: "http://bidspace.info",
     credentials: true,
   })
 );
