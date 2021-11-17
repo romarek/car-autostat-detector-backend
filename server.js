@@ -7,7 +7,7 @@ const morgan = require("morgan");
 const socketIO = require("socket.io");
 const ch = require("chalk");
 const path = require("path");
-const http = require("http");
+const https = require("https");
 const fs = require("fs");
 const request = require('request');
 const StreamArray = require('stream-json/streamers/StreamArray');
@@ -43,7 +43,7 @@ app.use(
   express.urlencoded({ extended: true }),
   morgan("tiny"),
   cors({
-    origin: "http://bidspace.info",
+    origin: "https://bidspace.info",
     credentials: true,
   })
 );
