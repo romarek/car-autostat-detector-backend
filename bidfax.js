@@ -8,8 +8,8 @@ async function scrapeData(url, i) {
   try {
     const browser = await puppeteer.launch(
       {
-        // args: ['--proxy-server=socks5://127.0.0.1:9050', '--no-sandbox', '--disable-setuid-sandbox'], 
-        headless: false
+        headless: false,
+        args: ['--no-sandbox', '--disable-setuid-sandbox', '--use-gl=egl']
       }
     );
     const page = await browser.newPage();
@@ -35,7 +35,7 @@ async function scrapeData(url, i) {
   }
 }
 async function generateLinks() {
-  for (let i = 1; i < 99; i++) {
+  for (let i = 1; i < 10; i++) {
     const brands = [
       'audi', 'bentley', 'bmw', 'alfa-romeo', 'aston-martin', 'buick', 'cadillac', 'chevrolet',
       'dodge', 'ducati', 'ferrari', 'honda', 'infiniti', 'jaguar', 'kia', 'land-rover', 'lexus',
