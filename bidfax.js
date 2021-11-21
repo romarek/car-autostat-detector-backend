@@ -19,8 +19,8 @@ async function scrapeData(url, i) {
     const hrefs = await Promise.all((await page.$x('//div[@class="caption"]/a')).map(async item => await (await item.getProperty('href')).jsonValue()));
     const dataBind = JSON.stringify(hrefs);
     const d = new Date();
-  let ms = d.getUTCMilliseconds();
-    await fs.writeFile(`./coutries${i}-${ms}.txt`, dataBind, (err) => {
+    let ms = d.getUTCMilliseconds();
+    await fs.writeFile(`./_list_to_merge/coutries${i}-${ms}.txt`, dataBind, (err) => {
       if (err) {
         console.error(err);
         browser.close();
