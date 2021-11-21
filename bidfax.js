@@ -8,8 +8,8 @@ async function scrapeData(url, i) {
   try {
     const browser = await puppeteer.launch(
       {
-        headless: false,
-        args: ['--no-sandbox', '--disable-setuid-sandbox', '--use-gl=egl', '--disable-dev-shm-usage', '--disable-extensions-except=' + this.extensionPathBuildPath, '--load-extension=' + this.extensionPathBuildPath]
+        headless: false
+        // args: ['--no-sandbox', '--disable-setuid-sandbox', '--use-gl=egl', '--disable-dev-shm-usage', '--disable-extensions-except=' + this.extensionPathBuildPath, '--load-extension=' + this.extensionPathBuildPath]
       }
     );
     const page = await browser.newPage();
