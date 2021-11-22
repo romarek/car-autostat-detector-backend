@@ -53,7 +53,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 const db = require("./models");
 const Role = db.role;
-db.sequelize.sync({ force: false }).then(() => {
+db.sequelize.sync({ force: true }).then(() => {
   initial();
   AdminBro.registerAdapter(ABSequelize);
 
