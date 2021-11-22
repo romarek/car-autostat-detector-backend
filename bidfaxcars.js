@@ -211,7 +211,7 @@ async function getListOfFiles() {
 // getListOfFiles();
 // scrapeAllProcessFromFiles();
 
-fs.readFile(`./bin/_links_to_convert/linkstoconvert.js`, 'utf8', (err, data) => {
+fs.readFile(`./linkstoconvert.js`, 'utf8', (err, data) => {
   array = JSON.parse(data);
   scrapeAllProcess();
 });
