@@ -1,4 +1,5 @@
 [
+"https://en.bidfax.info/tesla/model-y/11109399-tesla-model-y-long-range-2021-white-dual-vin-5yjygdee0mf092776.html",
 "https://en.bidfax.info/honda/hr-v/10948123-honda-hr-v-exl-2016-blue-18l-4-vin-3czru6h79gm726361.html",
 "https://en.bidfax.info/honda/pilot/10948121-honda-pilot-vp-2008-blue-35l-6-vin-5fnyf18228b012449.html",
 "https://en.bidfax.info/honda/cr-v/10948118-honda-cr-v-ex-2015-burgundy-24l-4-vin-2hkrm4h58fh615670.html",
