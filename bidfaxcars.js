@@ -152,7 +152,7 @@ async function scrapeData(url) {
         } else {
             summary = JSON.stringify(results);
         }
-        fs.writeFile(`./car.json`, summary.replaceAll(/\\/gi, ''), (err) => {
+        fs.writeFile(`./car.json`, summary.replace(/\\/gi, ''), (err) => {
             if (err) {
               console.error(err);
               browser.close();
