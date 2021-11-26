@@ -141,7 +141,10 @@ exports.findOneByParams = (req, res) => {
                 ],
             },
             limit,
-            offset 
+            offset,
+            order: [
+                ['id', 'DESC']
+            ]
         })
     .then(data => {
         const response = getPagingData(data, page, limit);
