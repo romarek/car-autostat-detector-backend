@@ -136,8 +136,8 @@ exports.findOneByParams = (req, res) => {
                     condDate.begin,
                     condDate.end,
                     condRegion,
-                    condState,
-                    { YardName: { [Op.like]: `%IAAI%` } }
+                    condState
+                    // { YardName: { [Op.like]: `%IAAI%` } }
                 ],
             },
             limit,
