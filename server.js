@@ -62,6 +62,34 @@ db.sequelize.sync({ force: false }).then(() => {
       primary100: '#000'
     },
     resources: [
+      { resource: User,
+        options: {
+          properties: {
+            encryptedPassword: {
+              isVisible: false,
+            },
+            password: {
+              type: 'string',
+              isVisible: {
+                list: false, edit: true, filter: false, show: false,
+              },
+            },
+          },
+          actions: {
+            new: {
+              before: async (request) => {
+                if(request.payload.password) {
+                  request.payload = {
+                    ...request.payload,
+                    encryptedPassword: await bcrypt.hash(request.payload.password, 10),
+                    password: undefined,
+                  }
+                }
+                return request
+              },
+            }
+          }
+      }},
       { resource: db.salesdata, options: { listProperties: [
           'VIN', 'LotNumber', 'Make', 'ModelDetail', 'BodyStyle', 'Color'
       ] } },
@@ -150,8 +178,12 @@ db.sequelize.sync({ force: false }).then(() => {
     loginPath: '/panel/login',
     logoutPath: '/panel/logout',
   });
-const router = ABExpress.buildRouter(adminBro);
+const router = AdminBroExpress.buildAuthenticatedRouter(adminBro, {
+    cookiePassword: 'admin-panel-tutorial',
+    authenticate,
+  }, null, sessionStorage);
 app.use(adminBro.options.rootPath, router);
+app.use(adminBro.options.loginPath, router);
 
 app.get("/", (req, res) => {
   res.json({ message: "App is running!" });
