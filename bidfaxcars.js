@@ -1,10 +1,7 @@
-const axios = require("axios");
 const cheerio = require("cheerio");
 const puppeteer = require('puppeteer');
-const proxyChain = require('proxy-chain');
 const fs = require("fs");
 const Jimp = require('jimp');
-const sharp = require('sharp');
 const path = require('path');
 
 async function scrapeData(url) {
@@ -130,7 +127,7 @@ async function scrapeData(url) {
               .then(imageRead => {
                   return imageRead
                       .quality(100)
-                      .write(path.join(__dirname, `./storage/${make}/${make}-${model}-${color}-${year}-${VIN}_${number}.jpg`));
+                      .write(path.join(__dirname, `./storage/${make.toLowerCase()}/${make.toLowerCase()}-${model.toLowerCase()}-${color.toLowerCase()}-${year}-${VIN.toLowerCase()}_${number}.jpg`));
               })
               .catch(err => {
                   console.error(err);
