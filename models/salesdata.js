@@ -1,175 +1,176 @@
-module.exports = (sequelize, Sequelize) => {
-    const SalesData = sequelize.define("salesdata", {
+'use strict';
+module.exports = (sequelize, DataTypes) => {
+    const SalesData = sequelize.define('SalesData', {
       Title: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       FinalBid: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       YardNumber: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       YardName: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       SaleDateMDCY: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       DayOfWeek: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       SaleTimeHHMM: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       TimeZone: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       Item: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       LotNumber: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       VehicleType: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       Year: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       Make: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       ModelGroup: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       ModelDetail: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       BodyStyle: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       Color: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       DamageDescription: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       SecondaryDamage: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       SaleTitleState: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       SaleTitleType: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       HasKeysYesOrNo: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       VIN: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       Odometer: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       RepairCost: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       Engine: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       Drive: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       Transmission: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       FuelType: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       Cylinders: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       RunsDrives: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       SaleStatus: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       HighBidNonVixSealedVix: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       SpecialNote: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       LocationCity: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       LocationState: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       LocationZIP: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       LocationCountry: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       CurrencyCode: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       ImageThumbnail: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       CreateDateTime: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       GridRow: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       MakeAnOfferEligible: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       BuyItNowPrice: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       ImageURL: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       ImageURL01: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       ImageURL02: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       ImageURL03: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       ImageURL04: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       ImageURL05: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       ImageURL06: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       ImageURL07: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       ImageURL08: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       ImageURL09: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       ImageURL10: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       Trim: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       LastUpdatedTime: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       }
     });
   

@@ -1,22 +1,22 @@
-module.exports = (sequelize, Sequelize) => {
-    const Auctions = sequelize.define("auctions", {
+module.exports = (sequelize, DataTypes) => {
+    const Auctions = sequelize.define("Auctions", {
       auctionId: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       saleName: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       salePlatform: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       auctionDateTimeInUTC: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       facility: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       totalItems: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       }
     });
   

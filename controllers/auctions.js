@@ -1,5 +1,5 @@
 const db = require("../models");
-const Auctions = db.auctions;
+const Auctions = db.Auctions;
 const Op = db.Sequelize.Op;
 
 const getPagination = (page, size) => {

@@ -1,5 +1,5 @@
 const db = require("../models");
-const SalesData = db.salesdata;
+const SalesData = db.SalesData;
 const Op = db.Sequelize.Op;
 const axios = require('axios');
 
@@ -424,10 +424,10 @@ exports.findAllTitlesAndVIN = (req, res) => {
     });
 };
 
-exports.fetchImages = (req, res) => {
+exports.fetchImagesCopart = (req, res) => {
     // Validate request
-    const id = req.params.id;
-    if (!id) {
+    const lot = req.params.lot;
+    if (!lot) {
         res.status(400).send({
           message: "Content can not be empty!"
         });
@@ -435,7 +435,34 @@ exports.fetchImages = (req, res) => {
     }
 
     axios
-        .get('https://www.copart.com/public/data/lotdetails/solr/lotImages/30478350/USA', {
+        .get(`http://inventoryv2.copart.io/v1/lotImages/${lot}?country=us&brand=cprt&yardNumber=1`, {
+            headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            },
+        })
+        .then(response => {
+            res.send(JSON.stringify(response.data));
+        })
+        .catch(err => {
+            res.status(500).send({
+              message:
+                err.message || "Some error occurred while creating the Tutorial."
+            });
+        });
+}
+
+exports.fetchImagesIAAI = (req, res) => {
+    // Validate request
+    const lot = req.params.lot;
+    if (!lot) {
+        res.status(400).send({
+          message: "Content can not be empty!"
+        });
+        return;
+    }
+
+    axios
+        .get(`http://inventoryv2.copart.io/v1/lotImages/${lot}?country=us&brand=cprt&yardNumber=1`, {
             headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
             },
@@ -459,6 +486,21 @@ exports.createOne = (req, res) => {
         message: "Content can not be empty!"
       });
       return;
+    }
+    // Only unique records
+    let check = req.body.VIN;
+    function isVINUnique (check, isUnique) {
+        SalesData
+            .count({
+                where: {
+                    VIN: {
+                        [Op.like]: `${check}`
+                    }
+                }
+            })
+            .then(count => {
+                isUnique(count == 0);
+            });
     }
   
     // Create a Auction Item
@@ -520,16 +562,25 @@ exports.createOne = (req, res) => {
         Trim: req.body.Trim,
         LastUpdatedTime: req.body.LastUpdatedTime
     };
-  
-    // Save Auction in the database
-    SalesData.create(auction)
-      .then(data => {
-        res.send(data);
-      })
-      .catch(err => {
-        res.status(500).send({
-          message:
-            err.message || "Some error occurred while creating the Tutorial."
-        });
+
+    isVINUnique(check, function(isUnique) {
+        if (isUnique) {
+          // Save Auction in the database
+            SalesData.create(auction)
+                .then(data => {
+                res.send(data);
+                })
+                .catch(err => {
+                res.status(500).send({
+                    message:
+                    err.message || "Some error occurred while creating the Tutorial."
+                });
+            });
+        } else {
+            res.status(400).send({
+                message: "This VIN was added to database!"
+              });
+            return;
+        }
       });
   };

@@ -1,5 +1,5 @@
 const db = require("../models");
-const Views = db.views;
+const Views = db.Views;
 const Op = db.Sequelize.Op;
 
 const getPagination = (page, size) => {

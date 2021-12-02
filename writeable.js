@@ -13,7 +13,6 @@ let processNumber = 1;
 const processingStream = new Writable({
     write({key, value}, encoding, callback) {          
         setTimeout(() => {
-            // console.log(JSON.stringify(value));
             axios.post('https://panel.bidspace.info/api/salesdata', value, { headers: {
                 'Content-Type': 'application/json'
               }})

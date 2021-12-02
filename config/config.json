@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "wnz",
+    "password": "1234",
+    "database": "car_autostat_prod",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "wnz",
+    "password": "1234",
+    "database": "car_autostat_prod",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "wnz",
+    "password": "1234",
+    "database": "car_autostat_prod",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}

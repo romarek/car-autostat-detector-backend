@@ -21,7 +21,9 @@ module.exports = app => {
 
     router.get("/listall", salesdata.findAllTitlesAndVIN);
 
-    router.get("/images/:id", salesdata.fetchImages);
+    router.get("/images/copart/:lot", salesdata.fetchImagesCopart);
+
+    router.get("/images/iaai/:lot", salesdata.fetchImagesIAAI);
 
     router.post("/", salesdata.createOne);
   

@@ -1,19 +1,20 @@
-module.exports = (sequelize, Sequelize) => {
-    const Views = sequelize.define("views", {
+'use strict';
+module.exports = (sequelize, DataTypes) => {
+    const Views = sequelize.define("Views", {
       VIN: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       ipAddress: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       userAgent: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       date: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       time: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
     });
   

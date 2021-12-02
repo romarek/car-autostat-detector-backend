@@ -1,22 +1,22 @@
-module.exports = (sequelize, Sequelize) => {
-    const Requests = sequelize.define("requests", {
+module.exports = (sequelize, DataTypes) => {
+    const Requests = sequelize.define("Requests", {
       VIN: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       isDatabaseIn: {
-        type: Sequelize.BOOLEAN
+        type: DataTypes.BOOLEAN
       },
       ipAddress: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       userAgent: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       date: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       time: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
     });
   
