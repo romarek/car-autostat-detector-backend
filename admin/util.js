@@ -3,17 +3,17 @@ const { Users } = require('../models');
 const redis = require('redis');
 const session = require('express-session');
 
-let RedisStore = require('connect-redis')(session);
+// let RedisStore = require('connect-redis')(session);
 
-let redisClient = redis.createClient();
+// let redisClient = redis.createClient();
 
-const sessionStorage = {
-  store: new RedisStore({
-    client: redisClient
-  }),
-  secret: 'this is secret',
-  resave: false,
-};
+// const sessionStorage = {
+//   store: new RedisStore({
+//     client: redisClient
+//   }),
+//   secret: 'this is secret',
+//   resave: false,
+// };
 
 
 async function authenticate(email, password) { //eslint-disable-line
@@ -33,5 +33,5 @@ async function authenticate(email, password) { //eslint-disable-line
 
 module.exports = {
   authenticate,
-  sessionStorage,
+  // sessionStorage,
 };
