@@ -1,4 +1,4 @@
-const cheerio = require("cheerio");
+giconst cheerio = require("cheerio");
 const puppeteer = require('puppeteer');
 const fs = require("fs");
 const Jimp = require('jimp');
@@ -127,7 +127,7 @@ async function scrapeData(url) {
               .then(imageRead => {
                   return imageRead
                       .quality(100)
-                      .write(path.join(__dirname, `./storage/${make.toLowerCase()}/${make.toLowerCase()}-${model.toLowerCase()}-${color.toLowerCase()}-${year}-${VIN.toLowerCase()}_${number}.jpg`));
+                      .write(path.join(__dirname, `./storage/iaai/${make.toLowerCase()}/${make.toLowerCase()}-${model.toLowerCase()}-${color.toLowerCase()}-${year}-${VIN.toLowerCase()}_${number}.jpg`));
               })
               .catch(err => {
                   console.error(err);
