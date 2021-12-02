@@ -50,7 +50,7 @@ app.use(
   express.urlencoded({ extended: true }),
   morgan("tiny"),
   cors({
-    origin: "https://panel.bidspace.info/",
+    origin: "https://bidspace.info",
     credentials: true,
   })
 );
