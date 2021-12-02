@@ -1,7 +1,4 @@
-const axios = require("axios");
-const cheerio = require("cheerio");
 const puppeteer = require('puppeteer');
-const proxyChain = require('proxy-chain');
 const fs = require("fs");
 
 async function scrapeData(url, i) {
