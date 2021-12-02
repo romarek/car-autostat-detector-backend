@@ -1,4 +1,4 @@
-giconst cheerio = require("cheerio");
+const cheerio = require("cheerio");
 const puppeteer = require('puppeteer');
 const fs = require("fs");
 const Jimp = require('jimp');
