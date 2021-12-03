@@ -102,7 +102,7 @@ exports.findOneByVin = (req, res) => {
 // Find a single SalesData by Params
 exports.findOneByParams = (req, res) => {
 
-    const { page, size, type, make, model, yearBegin, yearEnd, vin, auction, dateBegin, dateEnd, region, state, yardNameQuery } = req.query;
+    const { page, size, type, make, model, yearBegin, yearEnd, vin, auction, dateBegin, dateEnd, region, state, yard } = req.query;
     var condVin = vin ? { VIN: { [Op.like]: `%${vin}%` } } : null;
     var condType = type ? { VehicleType: { [Op.like]: `%${type}%` } } : null;
     var condMake = make ? { Make: { [Op.like]: `%${make}%` } } : null;
