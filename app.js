@@ -60,7 +60,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 const db = require("./models");
 
-db.sequelize.sync({ force: true }).then(() => {
+db.sequelize.sync({ force: false }).then(() => {
 
   AdminBro.registerAdapter(AdminBroSequelize);
   app.get("/", (req, res) => {
