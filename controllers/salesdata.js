@@ -102,7 +102,7 @@ exports.findOneByVin = (req, res) => {
 // Find a single SalesData by Params
 exports.findOneByParams = (req, res) => {
 
-    const { page, size, type, make, model, yearBegin, yearEnd, vin, auction, dateBegin, dateEnd, region, state, yardName } = req.query;
+    const { page, size, type, make, model, yearBegin, yearEnd, vin, auction, dateBegin, dateEnd, region, state, yardNameQuery } = req.query;
     var condVin = vin ? { VIN: { [Op.like]: `%${vin}%` } } : null;
     var condType = type ? { VehicleType: { [Op.like]: `%${type}%` } } : null;
     var condMake = make ? { Make: { [Op.like]: `%${make}%` } } : null;
@@ -119,7 +119,7 @@ exports.findOneByParams = (req, res) => {
     var condRegion = region ? { LocationCountry: { [Op.like]: `%${region}%` } } : null;
     var condState = state ? { LocationState: { [Op.like]: `%${state}%` } } : null;
 
-    var yardName = yard ? { YardName: { [Op.like]: `%${yard}%` } } : null;
+    var yardNameQuery = yard ? { YardName: { [Op.like]: `%${yard}%` } } : null;
     
     const { limit, offset } = getPagination(page, size);
   
@@ -139,7 +139,7 @@ exports.findOneByParams = (req, res) => {
                     condDate.end,
                     condRegion,
                     condState,
-                    yardName,
+                    yardNameQuery,
                 ],
             },
             limit,
