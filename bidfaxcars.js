@@ -8,7 +8,7 @@ async function scrapeData(url) {
   try {
     const browser = await puppeteer.launch(
       {
-        // args: ['--proxy-server=socks5://127.0.0.1:9050', '--no-sandbox', '--disable-setuid-sandbox'], 
+        args: ['--proxy-server=127.0.0.1:9876', '--no-sandbox', '--disable-setuid-sandbox'], 
         headless: false
       }
     );
