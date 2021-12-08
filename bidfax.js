@@ -5,13 +5,14 @@ async function scrapeData(url, i) {
   try {
     const browser = await puppeteer.launch(
       {
-        headless: false
-        // args: ['--no-sandbox', '--disable-setuid-sandbox', '--use-gl=egl', '--disable-dev-shm-usage', '--disable-extensions-except=' + this.extensionPathBuildPath, '--load-extension=' + this.extensionPathBuildPath]
+        headless: false,
+        args: ['--no-sandbox', '--disable-setuid-sandbox']
       }
     );
     const page = await browser.newPage();
     await page.setViewport({width: 1440, height: 720});
     await page.goto(url, { waitUntil: 'networkidle2' });
+    await page.screenshot({path: 'buddy-screenshot.png'})
     const data = await page.content();
     const hrefs = await Promise.all((await page.$x('div.caption a')).map(async item => await (await item.getProperty('href')).jsonValue()));
     const dataBind = JSON.stringify(hrefs);
