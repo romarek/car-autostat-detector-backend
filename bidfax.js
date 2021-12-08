@@ -24,6 +24,7 @@ async function scrapeData(url, i) {
         return;
       }
       console.log("Successfully written data to file");
+      console.log(hrefs);
       browser.close();
     });
   } catch (err) {
