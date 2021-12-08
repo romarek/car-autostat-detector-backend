@@ -32,7 +32,7 @@ async function scrapeData(url, i) {
   }
 }
 async function generateLinks() {
-  for (let i = 1; i < 2; i++) {
+  for (let i = 1; i < 11; i++) {
     const brands = [
       'audi', 'bentley', 'bmw', 'alfa-romeo', 'aston-martin', 'buick', 'cadillac', 'chevrolet',
       'dodge', 'ducati', 'ferrari', 'honda', 'infiniti', 'jaguar', 'kia', 'land-rover', 'lexus',
