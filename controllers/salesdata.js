@@ -4,7 +4,7 @@ const Op = db.Sequelize.Op;
 const axios = require('axios');
 
 const getPagination = (page, size) => {
-  const limit = size ? +size : 10;
+  const limit = size ? +size : 300;
   const offset = page ? page * limit : 0;
 
   return { limit, offset };
