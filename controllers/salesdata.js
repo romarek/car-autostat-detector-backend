@@ -139,8 +139,8 @@ exports.findOneByParams = (req, res) => {
                     condDate.end,
                     condRegion,
                     condState,
-                    yardNameQuery,
-                    { SaleDateMDCY: { [Op.like]: `%07%` } }
+                    yardNameQuery
+                    //{ SaleDateMDCY: { [Op.like]: `%07%` } }
                     //{ YardName: { [Op.like]: `%Copart%` } }
                 ],
             },
