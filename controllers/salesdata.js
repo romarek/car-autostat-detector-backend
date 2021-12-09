@@ -141,7 +141,7 @@ exports.findOneByParams = (req, res) => {
                     condState,
                     yardNameQuery,
                     { YardName: { [Op.like]: `%Copart%` } },
-                    { SaleDateMDCY: { [Op.like]: `%07%` } }
+                    { SaleDateMDCY: { [Op.like]: `%7.12%` } }
                 ],
             },
             limit,
