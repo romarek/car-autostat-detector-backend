@@ -140,6 +140,7 @@ exports.findOneByParams = (req, res) => {
                     condRegion,
                     condState,
                     yardNameQuery,
+                    { YardName: { [Op.like]: `%Copart%` } }
                 ],
             },
             limit,
