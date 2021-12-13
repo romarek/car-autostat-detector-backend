@@ -10,7 +10,7 @@ async function scrapeData(url, i) {
       }
     );
     const page = await browser.newPage();
-    await page.setViewport({width: 1440, height: 720});
+    await page.setViewport({width: 1024, height: 720});
     await page.goto(url, { waitUntil: 'networkidle2' });
     await page.screenshot({path: 'buddy-screenshot.png'})
     const data = await page.content();
