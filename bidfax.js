@@ -5,8 +5,7 @@ async function scrapeData(url, i) {
   try {
     const browser = await puppeteer.launch(
       {
-        headless: false,
-        args: ['--no-sandbox', '--disable-setuid-sandbox']
+        headless: false
       }
     );
     const page = await browser.newPage();
