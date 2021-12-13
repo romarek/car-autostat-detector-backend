@@ -14,6 +14,7 @@ async function scrapeData(url, i) {
     await page.goto(url, { waitUntil: 'networkidle2' });
     await page.screenshot({path: 'buddy-screenshot.png'})
     const data = await page.content();
+    console.log(data);
     const hrefs = await Promise.all((await page.$x('//div[@class="caption"]/a')).map(async item => await (await item.getProperty('href')).jsonValue()));
     const dataBind = JSON.stringify(hrefs);
     const d = new Date();
